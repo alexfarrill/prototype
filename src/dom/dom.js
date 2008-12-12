@@ -598,7 +598,7 @@ Element.Methods = {
 
     element = forElement;
     do {
-      if (!Prototype.Browser.Opera || (element.tagName && (element.tagName.toUpperCase() == 'BODY'))) {
+      if (element.tagName != 'INPUT' && element.tagName != 'TEXTAREA' && (!Prototype.Browser.Opera || (element.tagName && (element.tagName.toUpperCase() == 'BODY')))) {
         valueT -= element.scrollTop  || 0;
         valueL -= element.scrollLeft || 0;
       }

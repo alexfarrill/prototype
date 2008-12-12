@@ -198,6 +198,46 @@
     })
   </script>
   
+  <div>
+    <p id="vo_input_log"><strong>viewportOffset input</strong> test - focus on the input, move cursor to the END of the numbers, type a character</p>
+    <input type="text" id="vo_input" class="subtest" value="012345678901234567890123456789" />
+  </div>
+  
+  <script type="text/javascript">
+    var orig_vo_input = $('vo_input').viewportOffset()[0];
+    $('vo_input').observe('keyup', function(e){
+      el = $('vo_input_log');
+      try {
+        if ($('vo_input').value.length > 30) {
+          if ($('vo_input').viewportOffset()[0] != orig_vo_input) throw 'viewportOffset[0] was: ' + $('vo_input').viewportOffset()[0] + ", but originally was " + orig_vo_input;
+          el.passed();
+        }
+      }
+      catch (err) { el.failed(err.toString()) }
+      log(e);
+    })
+  </script>
+  
+  <div>
+    <p id="vo_textarea_log"><strong>viewportOffset textarea</strong> test - focus on the textarea, move cursor to the END of the numbers, type a character</p>
+    <textarea id="vo_textarea" class="subtest">012345678901234567890123456789</textarea>
+  </div>
+  
+  <script type="text/javascript">
+    var orig_vo_textarea = $('vo_textarea').viewportOffset()[0];
+    $('vo_textarea').observe('keyup', function(e){
+      el = $('vo_textarea_log');
+      try {
+        if ($('vo_textarea').value.length > 30) {
+          if ($('vo_textarea').viewportOffset()[0] != orig_vo_textarea) throw 'viewportOffset[0] was: ' + $('vo_textarea').viewportOffset()[0] + ", but originally was " + orig_vo_textarea;
+          el.passed();
+        }
+      }
+      catch (err) { el.failed(err.toString()) }
+      log(e);
+    })
+  </script>
+  
   <p id="bind"><code>bindAsEventListener()</code> test</p>
   
   <script type="text/javascript">
